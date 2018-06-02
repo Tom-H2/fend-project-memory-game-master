@@ -39,8 +39,8 @@ function shuffle(array) {
 
  const gameCards = document.querySelectorAll('.card');
 
- gameCards.forEach(function(turn){
-   turn.addEventListener('click', funtion(evt){
+ gameCards.forEach(function(turn) {
+   turn.addEventListener('click', function(e) {
      turn.classList.add('open', 'show');
-   })
- })
+   });
+ });
