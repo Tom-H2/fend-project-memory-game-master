@@ -46,9 +46,9 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- const gameCards = document.querySelectorAll('.card');//sets variable for individual card
+ const turnCards = document.querySelectorAll('.card');//sets variable for individual card
 
- gameCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
+ turnCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
    turn.addEventListener('click', function(e) {
      turn.classList.add('open', 'show');
    });
