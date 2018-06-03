@@ -1,7 +1,16 @@
 /*
  * Create a list that holds all of your cards
  */
-
+const allCards = [      //array that holds allCards
+  "fa fa-diamond", "fa fa-diamond",
+  "fa fa-paper-plane-o", "fa fa-paper-plane-o",
+  "fa fa-anchor", "fa fa-anchor",
+  "fa fa-bolt", "fa fa-bolt",
+  "fa fa-cube", "fa fa-cube",
+  "fa fa-bomb", "fa fa-bomb",
+  "fa fa-leaf", "fa fa-leaf",
+  "fa fa-bicycle", "fa fa-bicycle",
+];
 
 /*
  * Display the cards on the page
@@ -37,9 +46,9 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- const gameCards = document.querySelectorAll('.card');
+ const gameCards = document.querySelectorAll('.card');//sets variable for individual card
 
- gameCards.forEach(function(turn) {
+ gameCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
    turn.addEventListener('click', function(e) {
      turn.classList.add('open', 'show');
    });
