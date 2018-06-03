@@ -12,6 +12,7 @@ const allCards = [      //array that holds allCards
   "fa fa-bicycle", "fa fa-bicycle",
 ];
 
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -47,9 +48,13 @@ function shuffle(array) {
  */
 
  const turnCards = document.querySelectorAll('.card');//sets variable for individual card
+ const match = 'match';
+    //turnCards.inserAdjacentHTML('afterend', match);
 
  turnCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
    turn.addEventListener('click', function(e) {
      turn.classList.add('open', 'show');
    });
+   turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+
  });
