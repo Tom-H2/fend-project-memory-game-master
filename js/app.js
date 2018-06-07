@@ -49,17 +49,21 @@ function shuffle(array) {
 
  const turnCards = document.querySelectorAll('.card');//sets variable for individual card
  const match = 'match';
+ const openCards = [];
     //turnCards.inserAdjacentHTML('afterend', match);
 
  turnCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
    turn.addEventListener('click', function(e) {
-     turn.classList.add('open', 'show');
-     turn.push(allCards);//As I turn the card I must push them into an array until the length of the array = 2.
+     openCards.push(turn);//As I turn the card I must push them into an array until the length of the array = 2.
+      if (openCards >= 2) {
+
+      }
+      else {
+        turn.classList.add('open', 'show');
+      }
      //If at that point the name of the card are the same
-     //Then turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+      turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
      //Else turn the cards back over
      //Else when all the turned over cards === 16 the game is over
    });
-
-
  });
