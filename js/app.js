@@ -62,11 +62,14 @@ function shuffle(array) {
         turn.classList.add('open', 'show');
       }
      //If at that point the name of the card are the same
-     //turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
      //Else turn the cards back over
      //Else when all the turned over cards === 16 the game is over
    });
  });
+
+function matchCard () {
+    turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+}
 
  function timer() {
 
