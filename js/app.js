@@ -48,8 +48,7 @@ function shuffle(array) {
  */
 
  const turnCards = document.querySelectorAll('.card');//sets variable for individual card
- const match = '';
- const openCards = [];
+
     //turnCards.inserAdjacentHTML('afterend', match);
 
  turnCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
@@ -67,8 +66,25 @@ function shuffle(array) {
  //Else turn the cards back over
  //Else when all the turned over cards === 16 the game is over
 
-function matchCard () {
+function setMatch () {
+  const match = '';
+  const openCards = [];
+  let firstCard = openCards[0];
+  let secondCard = openCards[1];
   openCards.push(turn);
+  if (
+    firstCard.firstElementName.className ===
+    secondCard.firstElementName.className
+) {
+    match === true;
+    console.log ('Match');
+}
+  else {
+    match === false;
+    console.log ('Not a match');
+  }
+}
+function matchCard () {
   if ((openCards.length === 2) && (match === true)) {
     turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
   }
