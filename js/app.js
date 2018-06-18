@@ -71,11 +71,10 @@ function matchCard () {
   openCards.push(turn);
   if ((openCards.length === 2) && (match === true)) {
     turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
-    if ((openCards.length === 2) && (match === false)) {
+  }
+    else if ((openCards.length === 2) && (match === false)) {
       turn.class.remove('open', 'show');
-    };
-  };
-
+    }
 }
 
  function timer() {
