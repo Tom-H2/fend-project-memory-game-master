@@ -21,6 +21,17 @@ const allCards = [      //array that holds allCards
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+const deck = document.querySelector('.deck');
+
+function newDeck() {
+    const shuffleDeck = Array.from(document.querySelectorAll('.deck li'));
+    const newShuffle = shuffle(shuffleDeck);
+    for (card of newShuffle) {
+      deck.appendChild(card);
+    }
+}
+newDeck();
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
