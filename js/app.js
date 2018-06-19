@@ -58,15 +58,29 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- const turnCards = document.querySelectorAll('.card');//sets variable for individual card
-
+const turnCards = document.querySelectorAll('.card');//sets variable for individual card
+const openCards = []; //openCards.length will return the length of the array
     //turnCards.inserAdjacentHTML('afterend', match);
 
  turnCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
    turn.addEventListener('click', function(e) {
-     turn.classList.add('open', 'show');
-   });
- });
+
+     if (!turn.classList.contains('open') && !turn.classList.contains('show') && !turn.classList.contains('match')) {
+      openCards.push(turn);
+      turn.classList.add('open', 'show');
+
+    if (openCards === 2) {
+      setTimeout(function(turn) {
+        openCards.forEach(function(turn) {
+        turn.class.remove('open', 'show');
+      });
+
+        openCards = [];
+        }, 1000);
+      }
+    }
+  });
+});
 
  /*
 
@@ -77,12 +91,12 @@ function shuffle(array) {
  //Else turn the cards back over
  //Else when all the turned over cards === 16 the game is over
 
-function setMatch () {
+/*function setMatch () {  //This function should add 'match' to the turned cards if those cards are a match
   const match = '';
-  const openCards = [];
+
   let firstCard = openCards[0];
   let secondCard = openCards[1];
-  openCards.push(turn);
+
   if (
     firstCard.firstElementName.className ===
     secondCard.firstElementName.className
@@ -100,9 +114,9 @@ function matchCard () {
     turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
   }
     else if ((openCards.length === 2) && (match === false)) {
-      turn.class.remove('open', 'show');
+
     }
-}
+}*/
 
  function timer() {
 
