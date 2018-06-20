@@ -21,7 +21,7 @@ const allCards = [      //array that holds allCards
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-const deck = document.querySelector('.deck');
+const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 
 function newDeck() {
     const shuffleDeck = Array.from(document.querySelectorAll('.deck li'));
@@ -57,7 +57,12 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
+deck.addEventListener('click', function(event) { //adds addEventListener to .deck 
+  const clickTarget = event.target;
+  if (clickTarget.classList.contains('card')) {
+    console.log("I'm a card!");
+  }
+});
 const turnCards = document.querySelectorAll('.card');//sets variable for individual card
 const openCards = []; //openCards.length will return the length of the array
     //turnCards.inserAdjacentHTML('afterend', match);
@@ -69,7 +74,7 @@ const openCards = []; //openCards.length will return the length of the array
       openCards.push(turn);
       turn.classList.add('open', 'show');
 
-    if (openCards === 2) {
+    if (openCards == 2) {
       setTimeout(function(turn) {
         openCards.forEach(function(turn) {
         turn.class.remove('open', 'show');
