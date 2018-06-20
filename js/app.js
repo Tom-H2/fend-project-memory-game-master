@@ -57,22 +57,19 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-deck.addEventListener('click', function(event) { //adds addEventListener to .deck 
-  const clickTarget = event.target;
-  if (clickTarget.classList.contains('card')) {
-    console.log("I'm a card!");
+const openCards = []; //openCards.length will return the length of the array
+
+deck.addEventListener('click', function(event) { //adds addEventListener to .deck
+  const turn = event.target;
+  if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
+    openCards.push(turn);
+    turn.classList.add('open', 'show');
   }
 });
 const turnCards = document.querySelectorAll('.card');//sets variable for individual card
-const openCards = []; //openCards.length will return the length of the array
-    //turnCards.inserAdjacentHTML('afterend', match);
 
- turnCards.forEach(function(turn) {  //creates function for turning and showing the gameCards
-   turn.addEventListener('click', function(e) {
 
-     if (!turn.classList.contains('open') && !turn.classList.contains('show') && !turn.classList.contains('match')) {
-      openCards.push(turn);
-      turn.classList.add('open', 'show');
+ /*
 
     if (openCards == 2) {
       setTimeout(function(turn) {
@@ -83,9 +80,7 @@ const openCards = []; //openCards.length will return the length of the array
         openCards = [];
         }, 1000);
       }
-    }
-  });
-});
+});*/
 
  /*
 
@@ -96,25 +91,23 @@ const openCards = []; //openCards.length will return the length of the array
  //Else turn the cards back over
  //Else when all the turned over cards === 16 the game is over
 
-/*function setMatch () {  //This function should add 'match' to the turned cards if those cards are a match
+function setMatch () {  //This function should add 'match' to the turned cards if those cards are a match
   const match = '';
 
-  let firstCard = openCards[0];
-  let secondCard = openCards[1];
+  //let firstCard = openCards[0];
+  //let secondCard = openCards[1];
 
   if (
-    firstCard.firstElementName.className ===
-    secondCard.firstElementName.className
+    openCards[0].firstElementName.className ===
+    openCards[1].firstElementName.className
 ) {
-    match === true;
     console.log ('Match');
 }
   else {
-    match === false;
     console.log ('Not a match');
   }
 }
-function matchCard () {
+/*function matchCard () {
   if ((openCards.length === 2) && (match === true)) {
     turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
   }
