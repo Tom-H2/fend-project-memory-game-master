@@ -57,6 +57,7 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+const turnCards = document.querySelectorAll('.card');//sets variable for individual card
 const openCards = []; //openCards.length will return the length of the array
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
@@ -65,22 +66,31 @@ deck.addEventListener('click', function(event) { //adds addEventListener to .dec
     openCards.push(turn);
     turn.classList.add('open', 'show');
   }
+  console.log (openCards);
+
+function setMatch () {
+  if (
+    openCards[0].firstElementChild.className ===
+    openCards[1].firstElementChild.className
+) {
+    console.log ('Match');
+}
+  else {
+    console.log ('Not a match');
+  }
+  if (openCards == 2) {
+    setTimeout(function(turn) {
+      openCards.forEach(function(turn) {
+      turn.class.remove('open', 'show');
+    });
+
+      openCards = [];
+      }, 1000);
+  }
+ }
 });
-const turnCards = document.querySelectorAll('.card');//sets variable for individual card
 
 
- /*
-
-    if (openCards == 2) {
-      setTimeout(function(turn) {
-        openCards.forEach(function(turn) {
-        turn.class.remove('open', 'show');
-      });
-
-        openCards = [];
-        }, 1000);
-      }
-});*/
 
  /*
 
@@ -91,7 +101,7 @@ const turnCards = document.querySelectorAll('.card');//sets variable for individ
  //Else turn the cards back over
  //Else when all the turned over cards === 16 the game is over
 
-function setMatch () {  //This function should add 'match' to the turned cards if those cards are a match
+/*function setMatch () {  //This function should add 'match' to the turned cards if those cards are a match
   const match = '';
 
   //let firstCard = openCards[0];
@@ -106,7 +116,7 @@ function setMatch () {  //This function should add 'match' to the turned cards i
   else {
     console.log ('Not a match');
   }
-}
+}*/
 /*function matchCard () {
   if ((openCards.length === 2) && (match === true)) {
     turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
