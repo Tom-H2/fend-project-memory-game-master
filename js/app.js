@@ -23,7 +23,7 @@ const allCards = [      //array that holds allCards
 // Shuffle function from http://stackoverflow.com/a/2450976
 const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 
-function newDeck() {
+function newDeck() { //function that shuffles the deck
     const shuffleDeck = Array.from(document.querySelectorAll('.deck li'));
     const newShuffle = shuffle(shuffleDeck);
     for (card of newShuffle) {
@@ -58,6 +58,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 const turnCards = document.querySelectorAll('.card');//sets variable for individual card
+  console.log (turnCards);
 const openCards = []; //openCards.length will return the length of the array
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
@@ -66,24 +67,22 @@ deck.addEventListener('click', function(event) { //adds addEventListener to .dec
     openCards.push(turn);
     turn.classList.add('open', 'show');
   }
-  console.log (openCards);
+    console.log (openCards);
 
 function setMatch () {
-  if (
-    openCards[0].firstElementChild.className ===
-    openCards[1].firstElementChild.className
+  let firstCard = openCards[0];
+  let secondCard = openCards[1];
+
+  if (firstCard.firstElementChild.className ===
+    secondCard.firstElementChild.className
 ) {
-    console.log ('Match');
+    turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
 }
-  else {
-    console.log ('Not a match');
-  }
-  if (openCards == 2) {
+  else if (openCards == 2) {
     setTimeout(function(turn) {
       openCards.forEach(function(turn) {
       turn.class.remove('open', 'show');
     });
-
       openCards = [];
       }, 1000);
   }
@@ -119,7 +118,7 @@ function setMatch () {
 }*/
 /*function matchCard () {
   if ((openCards.length === 2) && (match === true)) {
-    turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+
   }
     else if ((openCards.length === 2) && (match === false)) {
 
