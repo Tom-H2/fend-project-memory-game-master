@@ -24,7 +24,7 @@ const allCards = [      //array that holds allCards
 const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 
 function newDeck() { //function that shuffles the deck
-    const shuffleDeck = Array.from(document.querySelectorAll('.deck li'));
+    const shuffleDeck = Array.from(document.querySelectorAll('.card'));
     const newShuffle = shuffle(shuffleDeck);
     for (card of newShuffle) {
       deck.appendChild(card);
@@ -58,8 +58,8 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 const turnCards = document.querySelectorAll('.card');//sets variable for individual card
-  console.log (turnCards);
-const openCards = []; //openCards.length will return the length of the array
+  
+let openCards = []; //openCards.length will return the length of the array
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
   const turn = event.target;
@@ -67,21 +67,23 @@ deck.addEventListener('click', function(event) { //adds addEventListener to .dec
     openCards.push(turn);
     turn.classList.add('open', 'show');
   }
-    console.log (openCards);
 
-function setMatch () {
+if(openCards.length === 2) {
   let firstCard = openCards[0];
   let secondCard = openCards[1];
 
   if (firstCard.firstElementChild.className ===
-    secondCard.firstElementChild.className
-) {
-    turn.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+    secondCard.firstElementChild.className) {
+      openCards.forEach(function(card) {
+      card.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+    });
+
+    openCards = [];
 }
-  else if (openCards == 2) {
+  else  {
     setTimeout(function(turn) {
       openCards.forEach(function(turn) {
-      turn.class.remove('open', 'show');
+      turn.classList.remove('open', 'show');
     });
       openCards = [];
       }, 1000);
@@ -89,41 +91,6 @@ function setMatch () {
  }
 });
 
-
-
- /*
-
-   //As I turn the card I must push them into an array until the length of the array = 2.
-
- }*/
- //If at that point the name of the card are the same
- //Else turn the cards back over
- //Else when all the turned over cards === 16 the game is over
-
-/*function setMatch () {  //This function should add 'match' to the turned cards if those cards are a match
-  const match = '';
-
-  //let firstCard = openCards[0];
-  //let secondCard = openCards[1];
-
-  if (
-    openCards[0].firstElementName.className ===
-    openCards[1].firstElementName.className
-) {
-    console.log ('Match');
-}
-  else {
-    console.log ('Not a match');
-  }
-}*/
-/*function matchCard () {
-  if ((openCards.length === 2) && (match === true)) {
-
-  }
-    else if ((openCards.length === 2) && (match === false)) {
-
-    }
-}*/
 
  function timer() {
 
