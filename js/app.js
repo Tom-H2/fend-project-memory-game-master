@@ -64,6 +64,7 @@ let openCards = []; //openCards.length will return the length of the array
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
   const turn = event.target;
   incrementMoves();
+  keepScore();
   if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
     openCards.push(turn);
     turn.classList.add('open', 'show');
@@ -88,7 +89,7 @@ if(openCards.length === 2) {
     });
       openCards = [];
       }, 1000);
-  }
+   }
  }
 });
 
@@ -99,14 +100,24 @@ if(openCards.length === 2) {
 
 let mouseClicks = 0;
 
-function incrementMoves () {
+function incrementMoves() {
   mouseClicks++;
   const numMoves = document.querySelector('.moves');
   numMoves.innerHTML = mouseClicks;
 };
 
+function keepScore() {
+  const stars = document.querySelectorAll('.stars li');
+  if (mouseClicks > 24 && mouseClicks < 39) {
+    console.log ("remove one star");
+  }
+  else if (mouseClicks > 40) {
+    console.log ("remove two stars");
+  }
+}
+
  function starCounter() {
-   const stars = document.querySelectorAll('.stars li');
+
  };
 
 function message() {
