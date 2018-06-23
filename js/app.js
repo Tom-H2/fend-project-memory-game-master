@@ -100,13 +100,13 @@ if(openCards.length === 2) {
 
 let mouseClicks = 0;
 
-function incrementMoves() {
+function incrementMoves() { //listens to mouse clicks and increments up the Moves text. This function is called on line 66
   mouseClicks++;
   const numMoves = document.querySelector('.moves');
   numMoves.innerHTML = mouseClicks;
 };
 
-function keepScore() {
+function keepScore() { //tracks the number of mouse clicks from incrementMoves function the console.log tells what I want to happen to stars
   const stars = document.querySelectorAll('.stars li');
   if (mouseClicks > 24 && mouseClicks < 39) {
     console.log ("remove one star");
@@ -116,9 +116,9 @@ function keepScore() {
   }
 }
 
- function starCounter() {
+function starCounter() {
 
- };
+}
 
 function message() {
 
