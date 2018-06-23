@@ -58,11 +58,12 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 const turnCards = document.querySelectorAll('.card');//sets variable for individual card
-  
+
 let openCards = []; //openCards.length will return the length of the array
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
   const turn = event.target;
+  incrementMoves();
   if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
     openCards.push(turn);
     turn.classList.add('open', 'show');
@@ -96,12 +97,20 @@ if(openCards.length === 2) {
 
  }
 
- function stars() {
+let mouseClicks = 0;
 
- }
+function incrementMoves () {
+  mouseClicks++;
+  const numMoves = document.querySelector('.moves');
+  numMoves.innerHTML = mouseClicks;
+};
+
+ function starCounter() {
+   const stars = document.querySelectorAll('.stars li');
+ };
 
 function message() {
-  console.log.alert('Congratulations!');
+
 }
 
 function reset() {
