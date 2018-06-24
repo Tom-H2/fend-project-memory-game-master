@@ -57,7 +57,8 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-const turnCards = document.querySelectorAll('.card');//sets variable for individual card
+let turnCards = document.querySelectorAll('.card');//sets variable for individual card
+let stars = document.querySelectorAll('.fa-star');
 
 let openCards = []; //openCards.length will return the length of the array
 
@@ -107,18 +108,21 @@ function incrementMoves() { //listens to mouse clicks and increments up the Move
 };
 
 function keepScore() { //tracks the number of mouse clicks from incrementMoves function the console.log tells what I want to happen to stars
-  const stars = document.querySelectorAll('.stars li');
-  if (mouseClicks > 24 && mouseClicks < 39) {
-    console.log ("remove one star");
+  let thirdStar = document.getElementById('thirdStar'),
+      secondStar = document.getElementById('secondStar'),
+      firstStar = document.getElementById('firstStar');
+
+  if (mouseClicks === 20) {
+    thirdStar.classList.add('fa-star-o');
   }
-  else if (mouseClicks > 40) {
-    console.log ("remove two stars");
+  else if (mouseClicks === 34) {
+    secondStar.classList.add('fa-star-o');
+  }
+  else if (mouseClicks === 40) {
+    thirdStar.classList.add('fa-star-o');
   }
 }
 
-function starCounter() {
-
-}
 
 function message() {
 
