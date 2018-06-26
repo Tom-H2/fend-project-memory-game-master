@@ -11,7 +11,10 @@ const allCards = [      //array that holds allCards
   "fa fa-leaf", "fa fa-leaf",
   "fa fa-bicycle", "fa fa-bicycle",
 ];
-
+let turnCards = document.querySelectorAll('.card');//sets variable for individual card
+let stars = document.querySelectorAll('.fa-star');
+let openCards = []; //openCards.length will return the length of the array
+let time = 0;
 
 /*
  * Display the cards on the page
@@ -57,15 +60,13 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-let turnCards = document.querySelectorAll('.card');//sets variable for individual card
-let stars = document.querySelectorAll('.fa-star');
-
-let openCards = []; //openCards.length will return the length of the array
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
   const turn = event.target;
   incrementMoves();
   keepScore();
+  startTime();
+
   if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
     openCards.push(turn);
     turn.classList.add('open', 'show');
@@ -78,7 +79,7 @@ if(openCards.length === 2) {
   if (firstCard.firstElementChild.className ===
     secondCard.firstElementChild.className) {
       openCards.forEach(function(card) {
-      card.classList.add ('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+      card.classList.add('match'); //adds 'match' to clss 'card' that allows the cards to stay open
     });
 
     openCards = [];
@@ -93,11 +94,6 @@ if(openCards.length === 2) {
    }
  }
 });
-
-
- function timer() {
-
- }
 
 let mouseClicks = 0;
 
@@ -123,6 +119,18 @@ function keepScore() { //tracks the number of mouse clicks from incrementMoves f
   }
 }
 
+function startTime() {
+  time = 0;
+  let clockId = setInterval(() => {
+    time++;
+  }, 1000);
+}
+
+function runTime() {
+  let clock = document.querySelector('.clock');
+  console.log(clock);
+  clock.innerHTML = time;
+}
 
 function message() {
 
