@@ -120,16 +120,17 @@ function keepScore() { //tracks the number of mouse clicks from incrementMoves f
 }
 
 function startTime() {
+  let clock = document.querySelector('.clock');
   time = 0;
   let clockId = setInterval(() => {
     time++;
+    clock.innerHTML = time;
+    console.log(time);
   }, 1000);
 }
 
 function runTime() {
-  let clock = document.querySelector('.clock');
-  console.log(clock);
-  clock.innerHTML = time;
+
 }
 
 function message() {
