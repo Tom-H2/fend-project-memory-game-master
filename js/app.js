@@ -11,6 +11,8 @@ const allCards = [      //array that holds allCards
   "fa fa-leaf", "fa fa-leaf",
   "fa fa-bicycle", "fa fa-bicycle",
 ];
+
+const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 let turnCards = document.querySelectorAll('.card');//sets variable for individual card
 let stars = document.querySelectorAll('.fa-star');
 let openCards = []; //openCards.length will return the length of the array
@@ -24,7 +26,7 @@ let time = 0;
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
+
 
 function newDeck() { //function that shuffles the deck
     const shuffleDeck = Array.from(document.querySelectorAll('.card'));
@@ -65,7 +67,6 @@ deck.addEventListener('click', function(event) { //adds addEventListener to .dec
   const turn = event.target;
   incrementMoves();
   keepScore();
-  startTime();
 
   if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
     openCards.push(turn);
@@ -101,6 +102,8 @@ function incrementMoves() { //listens to mouse clicks and increments up the Move
   mouseClicks++;
   const numMoves = document.querySelector('.moves');
   numMoves.innerHTML = mouseClicks;
+  if (numMoves === 1);
+    startTime();
 };
 
 function keepScore() { //tracks the number of mouse clicks from incrementMoves function the console.log tells what I want to happen to stars
@@ -125,18 +128,10 @@ function startTime() {
   let clockId = setInterval(() => {
     time++;
     clock.innerHTML = time;
-    console.log(time);
   }, 1000);
 }
 
-function runTime() {
-
-}
-
-function message() {
-
-}
-
-function reset() {
-
-}
+let reset = document.querySelector('.restart'); //Event listener for restart button
+  reset.addEventListener('click', function(event) {
+    alert("Are you sure you want to restart this game?");
+  })
