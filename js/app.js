@@ -37,7 +37,7 @@ function newDeck() { //function that shuffles the deck
 }
 newDeck();
 
-function shuffle(array) {
+function shuffle(array) { //This code was provided in initial set up code
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -47,7 +47,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -129,6 +128,7 @@ function startTime() {
     time++;
     clock.innerHTML = time;
   }, 1000);
+
 }
 
 let reset = document.querySelector('.restart'); //Event listener for restart button
