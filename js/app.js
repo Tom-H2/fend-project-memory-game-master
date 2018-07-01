@@ -101,8 +101,9 @@ function incrementMoves() { //listens to mouse clicks and increments up the Move
   mouseClicks++;
   const numMoves = document.querySelector('.moves');
   numMoves.innerHTML = mouseClicks;
-  if (numMoves === 1);
+  if (mouseClicks === 1) {
     startTime();
+  }
 };
 
 function keepScore() { //tracks the number of mouse clicks from incrementMoves function the console.log tells what I want to happen to stars
