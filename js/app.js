@@ -136,3 +136,15 @@ let reset = document.querySelector('.restart'); //Event listener for restart but
   reset.addEventListener('click', function(event) {
     alert("Are you sure you want to restart this game?");
   })
+
+function starReset() {
+
+}
+
+function timeReset() {
+
+}
+
+function movesReset() {
+
+}
