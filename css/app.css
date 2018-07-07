@@ -38,13 +38,50 @@ h1 {
  */
  .modal__body {
    position: absolute;
-   height: 400px;
    width: 400px;
    top: 50%;
    left: 50%;
    background: #ffffff;
    transform: translate(-50%, -40%);
  }
+
+.hide {
+  display: none;
+}
+
+.modal__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0 1.5rem;
+  border-bottom: 1px solid black;
+  border-right: 5px;
+}
+
+.modal__close {
+  font-weight: bold;
+  font-size: 2rem;
+  padding-left: 5px;
+}
+
+.modal__stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.modal__button {
+  width: 60px;
+  height: 30px;
+}
 
 .deck {
     width: 660px;
