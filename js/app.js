@@ -137,6 +137,14 @@ let reset = document.querySelector('.restart'); //Event listener for restart but
     alert("Are you sure you want to restart this game?");
   })
 
+function callModal () {
+  const modal = document.querySelector('.modal__body');
+  modal.classList.toggle('hide');
+}
+
+callModal()
+callModal()
+
 function starReset() {
 
 }
