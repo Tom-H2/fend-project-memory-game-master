@@ -17,6 +17,7 @@ let turnCards = document.querySelectorAll('.card');//sets variable for individua
 let stars = document.querySelectorAll('.fa-star');
 let openCards = []; //openCards.length will return the length of the array
 let time = 0;
+let matchedCards = []; //creates open array into which matched cards will be pushed
 
 /*
  * Display the cards on the page
@@ -64,7 +65,7 @@ function shuffle(array) { //This code was provided in initial set up code
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
   const turn = event.target;
-  incrementMoves();
+  incrementMoves(); //changes the move score
   keepScore();
 
   if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
@@ -81,7 +82,6 @@ if(openCards.length === 2) {
       openCards.forEach(function(card) {
       card.classList.add('match'); //adds 'match' to clss 'card' that allows the cards to stay open
     });
-
     openCards = [];
 }
   else  {
@@ -134,7 +134,9 @@ function startTime() {
 
 let reset = document.querySelector('.restart'); //Event listener for restart button
   reset.addEventListener('click', function(event) {
-    alert("Are you sure you want to restart this game?");
+    starReset();
+    timeReset();
+    movesReset();
   })
 
 function callModal () {
@@ -144,6 +146,12 @@ function callModal () {
 
 callModal()
 callModal()
+
+function gameOver () {
+  if (matchedCards.length === 16) {
+    callModal();
+  }
+}
 
 function starReset() {
 
