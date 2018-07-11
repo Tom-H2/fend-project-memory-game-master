@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-const allCards = [      //array that holds allCards
+/*const allCards = [      //array that holds allCards
   "fa fa-diamond", "fa fa-diamond",
   "fa fa-paper-plane-o", "fa fa-paper-plane-o",
   "fa fa-anchor", "fa fa-anchor",
@@ -10,7 +10,7 @@ const allCards = [      //array that holds allCards
   "fa fa-bomb", "fa fa-bomb",
   "fa fa-leaf", "fa fa-leaf",
   "fa fa-bicycle", "fa fa-bicycle",
-];
+];*/
 
 const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 let turnCards = document.querySelectorAll('.card');//sets variable for individual card
@@ -64,7 +64,7 @@ function shuffle(array) { //This code was provided in initial set up code
  */
 
 deck.addEventListener('click', function(event) { //adds addEventListener to .deck
-  const turn = event.target;
+  let turn = event.target;
   incrementMoves(); //changes the move score
   keepScore();
 
@@ -134,6 +134,9 @@ function startTime() {
 
 let reset = document.querySelector('.restart'); //Event listener for restart button
   reset.addEventListener('click', function(event) {
+    /*if (turnCards.classList.contains('open', 'show', 'match')) { }
+      turnCards.classList.remove('open', 'show', 'match');
+    */
     starReset();
     timeReset();
     movesReset();
@@ -144,23 +147,26 @@ function callModal () {
   modal.classList.toggle('hide');
 }
 
-callModal()
-callModal()
-
 function gameOver () {
-  if (matchedCards.length === 16) {
-    callModal();
+  if (turnCards.classList.contains('match')) {
+      matchedCards.push(turn);
+      if (matchedCards.length === 16) {
+        callModal();
+    }
   }
 }
 
 function starReset() {
-
+  thirdStar.classList.add('fa-star');
+  secondStar.classList.add('fa-star');
+  firstStar.classList.add('fa-star');
+  alert("reset stars");
 }
 
 function timeReset() {
-
+  alert("reset time")
 }
 
 function movesReset() {
-
+ alert("reset moves")
 }
