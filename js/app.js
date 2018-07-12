@@ -162,6 +162,14 @@ function resetStars () {
   firstStar.classList.remove('fa-star-o');
 }
 
+function resetMoves () {
+  numMoves.innerHTML = 0;
+}
+
+function resetTime () {
+  clock.innerHTML = 0;
+}
+
 function stopTime () {
   clearInterval(clockId);
 }
@@ -176,8 +184,8 @@ function cardReset () {
 
 function gameReset() {
   resetStars();
-  numMoves.innerHTML = 0;
-  clock.innerHTML = 0;
+  resetMoves();
+  resetTime();
   stopTime();
   newDeck();
   cardReset();
