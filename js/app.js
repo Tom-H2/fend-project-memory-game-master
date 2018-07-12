@@ -15,8 +15,11 @@
 const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 let turnCards = document.querySelectorAll('.card');//sets variable for individual card
 let stars = document.querySelectorAll('.fa-star');
+let clock = document.querySelector('.clock');
+let numMoves = document.querySelector('.moves');
 let openCards = []; //openCards.length will return the length of the array
 let time = 0;
+let clockId;
 let matchedCards = []; //creates open array into which matched cards will be pushed
 let firstCard;
 let secondCard;
@@ -101,7 +104,6 @@ let mouseClicks = 0;
 
 function incrementMoves() { //listens to mouse clicks and increments up the Moves text. This function is called on line 66
   mouseClicks++;
-  const numMoves = document.querySelector('.moves');
   numMoves.innerHTML = mouseClicks;
   if (mouseClicks === 1) {
     startTime();
@@ -125,9 +127,8 @@ function keepScore() { //tracks the number of mouse clicks from incrementMoves f
 }
 
 function startTime() {
-  let clock = document.querySelector('.clock');
   time = 0;
-  let clockId = setInterval(() => {
+  clockId = setInterval(() => {
     time++;
     clock.innerHTML = time;
   }, 1000);
@@ -136,12 +137,7 @@ function startTime() {
 
 let reset = document.querySelector('.restart'); //Event listener for restart button
   reset.addEventListener('click', function(event) {
-    /*if (turnCards.classList.contains('open', 'show', 'match')) { }
-      turnCards.classList.remove('open', 'show', 'match');
-    */
-    starReset();
-    timeReset();
-    movesReset();
+    scoreReset();
   })
 
 function callModal () {
@@ -151,25 +147,23 @@ function callModal () {
 
 function gameOver () {
   if (firstCard.classList.contains('match') && secondCard.classList.contains('match')) {
-      console.log('matched');
       matchedCards.push(firstCard);
       matchedCards.push(secondCard);
       if (matchedCards.length === 16) {
         callModal();
+        stopTime();
     }
   }
 }
 
-function starReset() {
+function scoreReset() {
   thirdStar.classList.remove('fa-star-o');
   secondStar.classList.remove('fa-star-o');
   firstStar.classList.remove('fa-star-o');
+  numMoves.innerHTML = 0;
+  clock.innerHTML = 0;
 }
 
-function timeReset() {
-  alert("reset time")
-}
-
-function movesReset() {
- alert("reset moves")
+function stopTime () {
+  clearInterval(clockId);
 }
