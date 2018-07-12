@@ -148,14 +148,6 @@ document.querySelector('.modal__close').addEventListener('click', () => {
   callModal();
 });
 
-/*document.querySelector('.modal__rating').addEventListener('click', () => {
-  alert("Did you enjoy this game?")
-});*/
-
-/*document.querySelector('.modal__replay').addEventListener('click', () => {
-  scoreReset;// reset functionality at end
-});*/
-
 function resetStars () {
   thirdStar.classList.remove('fa-star-o');
   secondStar.classList.remove('fa-star-o');
@@ -179,10 +171,10 @@ function cardReset () {
   for (let card of cards) {
     card.className = 'card';
   }
-  console.log("reset cards")
 }
 
 function gameReset() {
+  mouseClicks = 0;
   resetStars();
   resetMoves();
   resetTime();
