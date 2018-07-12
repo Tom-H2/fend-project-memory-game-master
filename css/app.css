@@ -58,9 +58,17 @@ h1 {
   border-right: 5px;
 }
 
+.modal__title {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-left: 38%;
+  padding-right: 5px;
+}
+
 .modal__close {
   font-weight: bold;
   font-size: 2rem;
+  margin-right: 10%;
   padding-left: 5px;
 }
 
@@ -72,7 +80,7 @@ h1 {
   border-bottom: 1px solid black;
 }
 
-.modal__buttons {
+/*.modal__buttons {
   display: flex;
   justify-content: space-around;
   padding: 1rem;
@@ -81,7 +89,7 @@ h1 {
 .modal__button {
   width: 60px;
   height: 30px;
-}
+}*/
 
 .deck {
     width: 660px;
