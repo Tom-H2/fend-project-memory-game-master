@@ -1,18 +1,5 @@
-/*
- * Create a list that holds all of your cards
- */
-/*const allCards = [      //array that holds allCards
-  "fa fa-diamond", "fa fa-diamond",
-  "fa fa-paper-plane-o", "fa fa-paper-plane-o",
-  "fa fa-anchor", "fa fa-anchor",
-  "fa fa-bolt", "fa fa-bolt",
-  "fa fa-cube", "fa fa-cube",
-  "fa fa-bomb", "fa fa-bomb",
-  "fa fa-leaf", "fa fa-leaf",
-  "fa fa-bicycle", "fa fa-bicycle",
-];*/
 
-const deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
+let deck = document.querySelector('.deck'); //This function shuffles the deck every time the page is opened or reset
 let turnCards = document.querySelectorAll('.card');//sets variable for individual card
 let stars = document.querySelectorAll('.fa-star');
 let clock = document.querySelector('.clock');
@@ -137,13 +124,14 @@ function startTime() {
 
 let reset = document.querySelector('.restart'); //Event listener for restart button
   reset.addEventListener('click', function(event) {
-    scoreReset();
+    gameReset();
   })
 
 function callModal () {
   const modal = document.querySelector('.modal__body');
   modal.classList.toggle('hide');
 }
+  //callModal(); //keeps modal open for testing and styling
 
 function gameOver () {
   if (firstCard.classList.contains('match') && secondCard.classList.contains('match')) {
@@ -156,14 +144,41 @@ function gameOver () {
   }
 }
 
-function scoreReset() {
+document.querySelector('.modal__close').addEventListener('click', () => {
+  callModal();
+});
+
+/*document.querySelector('.modal__rating').addEventListener('click', () => {
+  alert("Did you enjoy this game?")
+});*/
+
+/*document.querySelector('.modal__replay').addEventListener('click', () => {
+  scoreReset;// reset functionality at end
+});*/
+
+function resetStars () {
   thirdStar.classList.remove('fa-star-o');
   secondStar.classList.remove('fa-star-o');
   firstStar.classList.remove('fa-star-o');
-  numMoves.innerHTML = 0;
-  clock.innerHTML = 0;
 }
 
 function stopTime () {
   clearInterval(clockId);
+}
+
+function cardReset () {
+  const cards = document.querySelectorAll('.deck li');
+  for (let card of cards) {
+    card.className = 'card';
+  }
+  console.log("reset cards")
+}
+
+function gameReset() {
+  resetStars();
+  numMoves.innerHTML = 0;
+  clock.innerHTML = 0;
+  stopTime();
+  newDeck();
+  cardReset();
 }
