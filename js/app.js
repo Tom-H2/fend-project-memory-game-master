@@ -18,7 +18,8 @@ let stars = document.querySelectorAll('.fa-star');
 let openCards = []; //openCards.length will return the length of the array
 let time = 0;
 let matchedCards = []; //creates open array into which matched cards will be pushed
-
+let firstCard;
+let secondCard;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -74,14 +75,15 @@ deck.addEventListener('click', function(event) { //adds addEventListener to .dec
   }
 
 if(openCards.length === 2) {
-  let firstCard = openCards[0];
-  let secondCard = openCards[1];
+  firstCard = openCards[0];
+  secondCard = openCards[1];
 
   if (firstCard.firstElementChild.className ===
     secondCard.firstElementChild.className) {
       openCards.forEach(function(card) {
-      card.classList.add('match'); //adds 'match' to clss 'card' that allows the cards to stay open
+      card.classList.add('match'); //adds 'match' to class 'card' that allows the cards to stay open
     });
+    gameOver();
     openCards = [];
 }
   else  {
@@ -148,8 +150,10 @@ function callModal () {
 }
 
 function gameOver () {
-  if (turnCards.classList.contains('match')) {
-      matchedCards.push(turn);
+  if (firstCard.classList.contains('match') && secondCard.classList.contains('match')) {
+      console.log('matched');
+      matchedCards.push(firstCard);
+      matchedCards.push(secondCard);
       if (matchedCards.length === 16) {
         callModal();
     }
@@ -157,10 +161,9 @@ function gameOver () {
 }
 
 function starReset() {
-  thirdStar.classList.add('fa-star');
-  secondStar.classList.add('fa-star');
-  firstStar.classList.add('fa-star');
-  alert("reset stars");
+  thirdStar.classList.remove('fa-star-o');
+  secondStar.classList.remove('fa-star-o');
+  firstStar.classList.remove('fa-star-o');
 }
 
 function timeReset() {
