@@ -151,6 +151,13 @@ document.querySelector('.modal__close').addEventListener('click', () => {
   callModal();
 });
 
+function finalScores () {
+  finalStars = document.querySelector('.modal__stars');
+    finalStars.innerHTML.add(mouseClicks);
+  finalClicks = document.querySelector('.modal__moves');
+  finalTime = document.querySelector('.modal__time');
+}
+
 document.querySelector('.modal__button').addEventListener('click', () => { //replay button on modal
   mouseClicks = 0;
   resetStars();
