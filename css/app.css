@@ -81,16 +81,15 @@ h1 {
   border-bottom: 1px solid black;
 }
 
-/*.modal__buttons {
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-}
-
 .modal__button {
-  width: 60px;
-  height: 30px;
-}*/
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 42%;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}
 
 .deck {
     width: 660px;

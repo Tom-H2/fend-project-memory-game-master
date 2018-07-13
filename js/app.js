@@ -10,6 +10,9 @@ let clockId;
 let matchedCards = []; //creates open array into which matched cards will be pushed
 let firstCard;
 let secondCard;
+let finalStars;
+let finalClicks;
+let finalTime;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -146,6 +149,15 @@ function gameOver () {
 
 document.querySelector('.modal__close').addEventListener('click', () => {
   callModal();
+});
+
+document.querySelector('.modal__button').addEventListener('click', () => { //replay button on modal
+  mouseClicks = 0;
+  resetStars();
+  resetMoves();
+  resetTime();
+  newDeck();
+  cardReset();
 });
 
 function resetStars () {
