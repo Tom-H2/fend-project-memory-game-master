@@ -13,6 +13,7 @@ let secondCard;
 let finalStars;
 let finalClicks;
 let finalTime;
+let starCount;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -107,12 +108,15 @@ function keepScore() { //tracks the number of mouse clicks from incrementMoves f
 
   if (mouseClicks === 20) {
     thirdStar.classList.add('fa-star-o');
+    starCount = 2;
   }
   else if (mouseClicks === 34) {
     secondStar.classList.add('fa-star-o');
+    starCount = 1;
   }
   else if (mouseClicks === 40) {
     thirdStar.classList.add('fa-star-o');
+    starCount = 0;
   }
 }
 
@@ -152,8 +156,20 @@ document.querySelector('.modal__close').addEventListener('click', () => {
   callModal();
 });
 
+/*function starCounter () { //This function counts the number of stars
+  if (thirdStar.classList.contains('fa-star')) {
+    starCount = '3';
+  }
+  else if (thirdStar.classList.contains('fa-star-o') && secondStar.classList.contains('fa-star')) {
+    starCount = '2';
+  }
+  else if (thirdStar.classList.contains('fa-star-o') && secondStar.classList.contains('fa-star-o') && firstStar.classList.contains('fa-star')) {
+    starCount = '1';
+  }
+}*/
+
+
 function finalScores () {
-  const starCount = 2;
   finalClicks = document.querySelector('.modal__moves');
     finalClicks.innerHTML = 'Moves = ' + mouseClicks;
   finalTime = document.querySelector('.modal__time');
