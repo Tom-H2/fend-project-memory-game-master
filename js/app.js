@@ -64,12 +64,12 @@ deck.addEventListener('click', function (event) { //adds addEventListener to .de
 	incrementMoves(); //changes the move score
 	keepScore();
 
-	if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) {
+	if (turn.classList.contains('card') && openCards.length < 2 && !turn.classList.contains('open', 'show', 'match')) { //opens and shows the cards
 		openCards.push(turn);
 		turn.classList.add('open', 'show');
 	}
 
-	if (openCards.length === 2) {
+	if (openCards.length === 2) { //identifies the cards that were pushed to the openCards array
 		firstCard = openCards[0];
 		secondCard = openCards[1];
 
@@ -119,7 +119,7 @@ function keepScore() { //tracks the number of mouse clicks from incrementMoves f
 	}
 }
 
-function startTime() {
+function startTime() { //This function sets up a timer. I followed Matt Cranford's tutorial for help on this
 	time = 0;
 	clockId = setInterval(() => {
 		time++;
@@ -155,7 +155,7 @@ document.querySelector('.modal__close').addEventListener('click', () => {
 	callModal();
 });
 
-function finalScores() {
+function finalScores() { //This function writes the final scores to the modal
 	finalClicks = document.querySelector('.modal__moves');
 	finalClicks.innerHTML = 'Moves = ' + mouseClicks;
 	finalTime = document.querySelector('.modal__time');
