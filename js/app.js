@@ -143,6 +143,7 @@ function gameOver () {
       if (matchedCards.length === 16) {
         callModal();
         stopTime();
+        finalScores();
     }
   }
 }
@@ -152,10 +153,14 @@ document.querySelector('.modal__close').addEventListener('click', () => {
 });
 
 function finalScores () {
-  finalStars = document.querySelector('.modal__stars');
-    finalStars.innerHTML.add(mouseClicks);
+  const starCount = 2;
   finalClicks = document.querySelector('.modal__moves');
+    finalClicks.innerHTML = 'Moves = ' + mouseClicks;
   finalTime = document.querySelector('.modal__time');
+    finalTime.innerHTML = 'Seconds = ' + time;
+  finalStars = document.querySelector('.modal__stars');
+    finalStars.innerHTML = 'Stars = ' + starCount;
+
 }
 
 document.querySelector('.modal__button').addEventListener('click', () => { //replay button on modal
